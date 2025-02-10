@@ -36,4 +36,8 @@ java {
 tasks.named<Test>("test") {
     // Use TestNG for unit tests.
     useTestNG()
+
+    testLogging {
+        events("standardOut", "started", "passed", "skipped", "failed")
+    }
 }
