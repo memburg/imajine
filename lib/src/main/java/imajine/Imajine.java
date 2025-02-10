@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import javax.annotation.Nonnull;
 
-public class Image {
+public class Imajine {
     private int width, height;
 
     @Nonnull
@@ -13,7 +13,7 @@ public class Image {
     @Nonnull
     BufferedImage bufferedImage;
 
-    public Image(String source) {
+    public Imajine(String source) {
         this.source = source;
         width = 1920;
         height = 1080;
