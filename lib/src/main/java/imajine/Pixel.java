@@ -41,4 +41,9 @@ public class Pixel {
     public int getA() {
         return a;
     }
+
+    @Override
+    public String toString() {
+        return "I'm a Pixel";
+    }
 }

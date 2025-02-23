@@ -1,22 +1,30 @@
 package imajine;
 
+import java.io.File;
+import java.io.IOException;
 import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.annotation.Nonnull;
 
 public class Imajine {
+    @Nonnull
     private int width, height;
 
     @Nonnull
-    String source;
+    private String source;
 
     @Nonnull
-    BufferedImage bufferedImage;
+    private BufferedImage bufferedImage;
 
-    public Imajine(String source) {
+    public Imajine(String source) throws IOException {
         this.source = source;
-        width = 1920;
-        height = 1080;
+
+        File f = new File(source);
+        bufferedImage = ImageIO.read(f);
+
+        width = bufferedImage.getWidth();
+        height = bufferedImage.getHeight();
     }
 
     public boolean someLibraryMethod() {
@@ -25,15 +33,10 @@ public class Imajine {
 
     @Override
     public String toString() {
-        return String.format("%dx%d", width, height);
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"png\" }",
+                source,
+                width,
+                height);
     }
 
     public int getWidth() {
