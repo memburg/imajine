@@ -2,21 +2,19 @@ package imajine;
 
 import java.io.IOException;
 
-import javax.script.ScriptEngine;
-
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
 public class ImajineTest {
-    private ScriptEngine engine;
+    String rootDir = System.getProperty("user.dir");
+    String lennaPath = rootDir + "/src/test/resources/lenna.png";
 
     @Test
     public void someLibraryMethodReturnsTrue() throws IOException {
-        String rootDir = System.getProperty("user.dir");
-        Imajine lenna = new Imajine(rootDir + "/src/test/resources/lenna.png");
-
+        Imajine lenna = new Imajine(lennaPath);
         String lennaStr = lenna.toString();
-        assertTrue(lenna.someLibraryMethod(), "someLibraryMethod should return 'true'");
+
+        assertTrue(JsonParser.isValidJson(lennaStr), "lenna.toString() is not a valid JSON string");
     }
 }

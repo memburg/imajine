@@ -12,7 +12,7 @@ public class Imajine {
     private int width, height;
 
     @Nonnull
-    private String source;
+    private String source, format;
 
     @Nonnull
     private BufferedImage bufferedImage;
@@ -25,18 +25,16 @@ public class Imajine {
 
         width = bufferedImage.getWidth();
         height = bufferedImage.getHeight();
-    }
-
-    public boolean someLibraryMethod() {
-        return true;
+        format = source.substring(source.lastIndexOf('.') + 1);
     }
 
     @Override
     public String toString() {
-        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"png\" }",
+        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"%s\" }",
                 source,
                 width,
-                height);
+                height,
+                format);
     }
 
     public int getWidth() {
