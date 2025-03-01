@@ -2,6 +2,8 @@ package imajine;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -28,13 +30,19 @@ public class Imajine {
         format = source.substring(source.lastIndexOf('.') + 1);
     }
 
-    @Override
-    public String toString() {
-        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"%s\" }",
-                source,
-                width,
-                height,
-                format);
+    public void setPixel(Pixel pixel) {
+        Color color = new Color(pixel.getR(), pixel.getG(), pixel.getB());
+        bufferedImage.setRGB(pixel.getX(), pixel.getY(), color.getRGB());
+    }
+
+    public Pixel getPixel(int x, int y) {
+        int rgb = bufferedImage.getRGB(x, y);
+
+        int r = rgb >> 16 & 0xff;
+        int g = rgb >> 8 & 0xff;
+        int b = rgb & 0xff;
+
+        return new Pixel(x, y, r, g, b);
     }
 
     public int getWidth() {
@@ -43,5 +51,14 @@ public class Imajine {
 
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"%s\" }",
+                source,
+                width,
+                height,
+                format);
     }
 }
