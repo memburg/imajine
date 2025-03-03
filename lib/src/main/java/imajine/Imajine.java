@@ -31,7 +31,7 @@ public class Imajine {
     }
 
     public void setPixel(Pixel pixel) {
-        Color color = new Color(pixel.getR(), pixel.getG(), pixel.getB());
+        Color color = new Color(pixel.getRed(), pixel.getGreen(), pixel.getBlue());
         bufferedImage.setRGB(pixel.getX(), pixel.getY(), color.getRGB());
     }
 

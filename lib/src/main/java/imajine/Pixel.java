@@ -1,23 +1,23 @@
 package imajine;
 
 public class Pixel {
-    int x, y, r, g, b, a;
+    int x, y, red, green, blue, alpha;
 
-    public Pixel(int x, int y, int r, int g, int b, int a) {
+    public Pixel(int x, int y, int red, int green, int blue, int alpha) {
         this.x = x;
         this.y = y;
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.a = a;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.alpha = alpha;
     }
 
-    public Pixel(int x, int y, int r, int g, int b) {
+    public Pixel(int x, int y, int red, int green, int blue) {
         this.x = x;
         this.y = y;
-        this.r = r;
-        this.g = g;
-        this.b = b;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
     }
 
     public void setX(int x) {
@@ -28,20 +28,20 @@ public class Pixel {
         this.y = y;
     }
 
-    public void setR(int r) {
-        this.r = r;
+    public void setRed(int red) {
+        this.red = red;
     }
 
-    public void setG(int g) {
-        this.g = g;
+    public void setGreen(int green) {
+        this.green = green;
     }
 
-    public void setB(int b) {
-        this.b = b;
+    public void setBlue(int blue) {
+        this.blue = blue;
     }
 
-    public void setA(int a) {
-        this.a = a;
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
     }
 
     public int getX() {
@@ -52,20 +52,20 @@ public class Pixel {
         return y;
     }
 
-    public int getR() {
-        return r;
+    public int getRed() {
+        return red;
     }
 
-    public int getG() {
-        return g;
+    public int getGreen() {
+        return green;
     }
 
-    public int getB() {
-        return b;
+    public int getBlue() {
+        return blue;
     }
 
-    public int getA() {
-        return a;
+    public int getAlpha() {
+        return alpha;
     }
 
     @Override
@@ -73,8 +73,8 @@ public class Pixel {
         return String.format("{ \"x\": %d, \"y\": %d, \"red\": %d, \"green\": %d, \"blue\": %d }",
                 x,
                 y,
-                r,
-                g,
-                b);
+                red,
+                green,
+                blue);
     }
 }
