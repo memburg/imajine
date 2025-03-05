@@ -30,6 +30,13 @@ public class Imajine {
         format = source.substring(source.lastIndexOf('.') + 1);
     }
 
+    public void save(String output) throws IOException {
+        File f = new File(output);
+        String format = output.substring(output.lastIndexOf('.') + 1).toUpperCase();
+
+        ImageIO.write(bufferedImage, format, f);
+    }
+
     public void setPixel(Pixel pixel) {
         Color color = new Color(pixel.getRed(), pixel.getGreen(), pixel.getBlue());
         bufferedImage.setRGB(pixel.getX(), pixel.getY(), color.getRGB());
