@@ -1,4 +1,4 @@
-![alt text](resources/header.png)
+![alt text](/resources/header.png)
 
 <p align="center">
   <br/>
@@ -34,9 +34,4 @@
 </dependency>
 ```
 
-<div class="grid cards" markdown>
-
-![](lib/src/test/resources/lenna.png)
-![](lib/src/test/resources/lenna2.png)
-
-</div>
+![](/resources/lenna_examples.png)
