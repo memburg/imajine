@@ -4,6 +4,7 @@
   <br/>
   Imàjine is an easy-to-use image processing library written in Java.
   <br/>
+  <br/>
 </p>
 
 <div align="center">
