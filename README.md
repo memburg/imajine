@@ -20,18 +20,18 @@
 
 ```xml
 <repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
 </repositories>
 ```
 
 ```xml
 <dependency>
-    <groupId>com.github.memburg</groupId>
-    <artifactId>imajine</artifactId>
-    <version>1.0.0</version>
+  <groupId>com.github.memburg</groupId>
+  <artifactId>imajine</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 
