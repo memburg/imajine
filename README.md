@@ -18,6 +18,10 @@
 
 ## Install
 
+### Maven
+
+Add to pom.xml
+
 ```xml
 <repositories>
   <repository>
@@ -27,12 +31,36 @@
 </repositories>
 ```
 
+Step 2. Add the dependency
+
 ```xml
 <dependency>
   <groupId>com.github.memburg</groupId>
   <artifactId>imajine</artifactId>
   <version>1.0.0</version>
 </dependency>
+```
+
+### Gradle
+
+Add it in your root settings.gradle at the end of repositories:
+
+```gradle
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+
+Step 2. Add the dependency
+
+```gradle
+dependencies {
+  implementation 'com.github.memburg:imajine:1.0.0'
+}
 ```
 
 ![](/resources/lenna_examples.png)
