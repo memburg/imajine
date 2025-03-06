@@ -63,4 +63,6 @@ dependencies {
 }
 ```
 
-![](/resources/lenna_examples.png)
+| ![]( /resources/lenna.png ) | ![]( /resources/lenna_negative.png ) | ![]( /resources/lenna_colored.png ) | ![]( /resources/lenna_bw.png ) |
+|-----------------------------|--------------------------------------|-------------------------------------|--------------------------------|
+| From left to right:  |
