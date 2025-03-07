@@ -65,4 +65,4 @@ dependencies {
 
 | ![]( /resources/lenna.png ) | ![]( /resources/lenna_negative.png ) | ![]( /resources/lenna_colored.png ) | ![]( /resources/lenna_bw.png ) |
 |-----------------------------|--------------------------------------|-------------------------------------|--------------------------------|
-| From left to right:  |
+| Original image              | Negative filter every two pixels     | Lenna with a blue saturation        | A black and white filter       |
