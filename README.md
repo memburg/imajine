@@ -65,9 +65,4 @@ dependencies {
 
 ### Filter examples
 
-|   |   |
-| - | - |
-| ![]( /resources/lenna.png )          | Original image                   |
-| ![]( /resources/lenna_negative.png ) | Negative filter every two pixels |
-| ![]( /resources/lenna_colored.png )  | Lenna with a blue saturation     |
-| ![]( /resources/lenna_bw.png )       | Black and white filter           |
+![]( /resources/lenna_examples.png )
