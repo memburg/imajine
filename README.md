@@ -63,6 +63,11 @@ dependencies {
 }
 ```
 
-| ![]( /resources/lenna.png ) | ![]( /resources/lenna_negative.png ) | ![]( /resources/lenna_colored.png ) | ![]( /resources/lenna_bw.png ) |
-|-----------------------------|--------------------------------------|-------------------------------------|--------------------------------|
-| Original image              | Negative filter every two pixels     | Lenna with a blue saturation        | A black and white filter       |
+### Filter examples
+
+|   |   |
+| - | - |
+| ![]( /resources/lenna.png )          | Original image                   |
+| ![]( /resources/lenna_negative.png ) | Negative filter every two pixels |
+| ![]( /resources/lenna_colored.png )  | Lenna with a blue saturation     |
+| ![]( /resources/lenna_bw.png )       | Black and white filter           |
