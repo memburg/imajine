@@ -1,9 +1,14 @@
 package imajine;
 
 public class Pixel {
-    int x, y, red, green, blue, alpha;
+    final int x, y, red, green, blue, alpha;
 
     public Pixel(int x, int y, int red, int green, int blue, int alpha) {
+        validateColorValue(red);
+        validateColorValue(green);
+        validateColorValue(blue);
+        validateColorValue(alpha);
+
         this.x = x;
         this.y = y;
         this.red = red;
@@ -13,35 +18,13 @@ public class Pixel {
     }
 
     public Pixel(int x, int y, int red, int green, int blue) {
-        this.x = x;
-        this.y = y;
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        this(x, y, red, green, blue, 255); // Default alpha to 255 (opaque)
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setRed(int red) {
-        this.red = red;
-    }
-
-    public void setGreen(int green) {
-        this.green = green;
-    }
-
-    public void setBlue(int blue) {
-        this.blue = blue;
-    }
-
-    public void setAlpha(int alpha) {
-        this.alpha = alpha;
+    private void validateColorValue(int value) {
+        if (value < 0 || value > 255) {
+            throw new IllegalArgumentException("Color value must be between 0 and 255");
+        }
     }
 
     public int getX() {
@@ -70,11 +53,12 @@ public class Pixel {
 
     @Override
     public String toString() {
-        return String.format("{ \"x\": %d, \"y\": %d, \"red\": %d, \"green\": %d, \"blue\": %d }",
+        return String.format("{ \"x\": %d, \"y\": %d, \"red\": %d, \"green\": %d, \"blue\": %d, \"alpha\": %d }",
                 x,
                 y,
                 red,
                 green,
-                blue);
+                blue,
+                alpha);
     }
 }
