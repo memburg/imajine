@@ -117,6 +117,11 @@ public class Imajine {
         return height;
     }
 
+    /**
+     * Returns a string representation of the Imàjine object.
+     *
+     * @return a string representation of the Imàjine object
+     */
     @Override
     public String toString() {
         return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"%s\" }",
