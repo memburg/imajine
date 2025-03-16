@@ -9,36 +9,9 @@ public class Pixel {
     final int red;
     final int green;
     final int blue;
-    final int alpha;
 
     /**
      * Constructs a Pixel object with the specified coordinates and color values.
-     *
-     * @param x     the x-coordinate of the pixel
-     * @param y     the y-coordinate of the pixel
-     * @param red   the red component of the pixel color (0-255)
-     * @param green the green component of the pixel color (0-255)
-     * @param blue  the blue component of the pixel color (0-255)
-     * @param alpha the alpha component of the pixel color (0-255)
-     * @throws IllegalArgumentException if any color value is out of range (0-255)
-     */
-    public Pixel(int x, int y, int red, int green, int blue, int alpha) {
-        validateColorValue(red);
-        validateColorValue(green);
-        validateColorValue(blue);
-        validateColorValue(alpha);
-
-        this.x = x;
-        this.y = y;
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-        this.alpha = alpha;
-    }
-
-    /**
-     * Constructs a Pixel object with the specified coordinates and color values.
-     * The alpha component is set to 255 (opaque) by default.
      *
      * @param x     the x-coordinate of the pixel
      * @param y     the y-coordinate of the pixel
@@ -48,7 +21,15 @@ public class Pixel {
      * @throws IllegalArgumentException if any color value is out of range (0-255)
      */
     public Pixel(int x, int y, int red, int green, int blue) {
-        this(x, y, red, green, blue, 255); // Default alpha to 255 (opaque)
+        validateColorValue(red);
+        validateColorValue(green);
+        validateColorValue(blue);
+
+        this.x = x;
+        this.y = y;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
     }
 
     /**
@@ -109,27 +90,17 @@ public class Pixel {
     }
 
     /**
-     * Gets the alpha component of the pixel color.
-     *
-     * @return the alpha component of the pixel color
-     */
-    public int getAlpha() {
-        return alpha;
-    }
-
-    /**
      * Returns a string representation of the pixel.
      *
      * @return a string representation of the pixel
      */
     @Override
     public String toString() {
-        return String.format("{ \"x\": %d, \"y\": %d, \"red\": %d, \"green\": %d, \"blue\": %d, \"alpha\": %d }",
+        return String.format("{ \"x\": %d, \"y\": %d, \"red\": %d, \"green\": %d, \"blue\": %d }",
                 x,
                 y,
                 red,
                 green,
-                blue,
-                alpha);
+                blue);
     }
 }
