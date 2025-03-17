@@ -16,6 +16,21 @@
 ![Monthly download statistics](https://jitpack.io/v/memburg/imajine/month.svg)
 </div>
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Install](#install)
+  - [Maven](#maven)
+  - [Gradle](#gradle)
+- [Usage](#usage)
+  - [Loading an Image](#loading-an-image)
+  - [Creating a New Image](#creating-a-new-image)
+  - [Events Horizon Code](#events-horizon-code)
+- [Examples Gallery](#examples-gallery)
+- [Running Tests](#running-tests)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Install
 
 ### Maven
@@ -63,10 +78,40 @@ dependencies {
 }
 ```
 
-### Examples gallery
+## Usage
 
-![]( /resources/lenna_examples.png )
-![]( /resources/generative_art_examples.png )
+### Loading an Image
+
+```java
+import imajine.Imajine;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Imajine image = new Imajine("path/to/image.png");
+        System.out.println(image);
+    }
+}
+```
+
+### Creating a New Image
+
+```java
+import imajine.Imajine;
+import imajine.Pixel;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Imajine image = new Imajine(512, 512);
+        Pixel pixel = new Pixel(0, 0, 255, 0, 0); // Red pixel
+        image.setPixel(pixel);
+        image.save("path/to/output.png");
+    }
+}
+```
+
+### Events Horizon Code
 
 ```java
 final int IMAGE_SIZE = 512;
@@ -99,3 +144,24 @@ for (int col = 0; col < IMAGE_SIZE; col++) {
 
 im.save(EVENTS_HORIZON_PATH);
 ```
+
+## Examples Gallery
+
+![]( /resources/lenna_examples.png )
+![]( /resources/generative_art_examples.png )
+
+## Running Tests
+
+To run the tests, use the following command:
+
+```sh
+gradle test
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
