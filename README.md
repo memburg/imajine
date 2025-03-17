@@ -63,6 +63,39 @@ dependencies {
 }
 ```
 
-### Filter examples
+### Examples gallery
 
 ![]( /resources/lenna_examples.png )
+![]( /resources/generative_art_examples.png )
+
+```java
+final int IMAGE_SIZE = 512;
+Imajine im = new Imajine(IMAGE_SIZE, IMAGE_SIZE);
+
+for (int col = 0; col < IMAGE_SIZE; col++) {
+  for (int row = 0; row < IMAGE_SIZE; row++) {
+    float x = col, y = row;
+    float w = IMAGE_SIZE, h = IMAGE_SIZE;
+    float cx = (2 * x - w) / h;
+    float cy = (2 * y - w) / h;
+    float d = (float) Math.sqrt(cx * cx + cy * cy);
+
+    d -= 0.5;
+    d += 0.01 * h / (2 * (y - x) + h - w);
+    d = Math.abs(d);
+
+    if (d < 1e-6f) {
+        d = 1e-6f;
+    }
+
+    d = 0.1f / d;
+
+    int color = (int) (255 * d / (1 + d));
+    Pixel p = new Pixel(row, col, color, color, color);
+
+    im.setPixel(p);
+  }
+}
+
+im.save(EVENTS_HORIZON_PATH);
+```
