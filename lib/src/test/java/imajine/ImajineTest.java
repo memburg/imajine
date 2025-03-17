@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 public class ImajineTest {
     final String ROOT_DIR = System.getProperty("user.dir");
     final String LENNA_PATH = ROOT_DIR + "/src/test/resources/lenna.png";
-    final String LENNA_OUTPUT_PATH = ROOT_DIR + "/src/test/resources/lenna.png";
+    final String LENNA_OUTPUT_PATH = ROOT_DIR + "/src/test/resources/lenna_filter.png";
     final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/resources/events_horizon.png";
 
     @Test
