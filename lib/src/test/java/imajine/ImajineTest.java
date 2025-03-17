@@ -2,26 +2,30 @@ package imajine;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
 public class ImajineTest {
-    String rootDir = System.getProperty("user.dir");
-    String lennaPath = rootDir + "/src/test/resources/lenna.png";
-    String outputPath = rootDir + "/src/test/resources/lenna2.png";
+    final String ROOT_DIR = System.getProperty("user.dir");
+    final String LENNA_PATH = ROOT_DIR + "/src/test/resources/lenna.png";
+    final String LENNA_OUTPUT_PATH = ROOT_DIR + "/src/test/resources/lenna.png";
+    final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/resources/events_horizon.png";
 
     @Test
     public void toStringShouldBeValidJSON() throws IOException {
-        Imajine lenna = new Imajine(lennaPath);
-        String lennaStr = lenna.toString();
+        final String EXPECTED_STRING = "{ \"path\": \""
+                + ROOT_DIR
+                + "/src/test/resources/lenna.png\", \"format\": \"png\", \"width\": 512, \"height\": 512 }";
 
-        assertTrue(JsonParser.isValidJson(lennaStr), "lenna.toString() is not a valid JSON string");
+        Imajine lenna = new Imajine(LENNA_PATH);
+        Assert.assertEquals(lenna.toString(), EXPECTED_STRING);
     }
 
     @Test
     public void pixelCanBeSet() throws IOException {
-        Imajine lenna = new Imajine(lennaPath);
+        Imajine lenna = new Imajine(LENNA_PATH);
         Pixel pixel = new Pixel(42, 84, 123, 72, 9);
 
         lenna.setPixel(pixel);
@@ -32,8 +36,8 @@ public class ImajineTest {
     }
 
     @Test
-    public void imageCanBeSaved() throws IOException {
-        Imajine lenna = new Imajine(lennaPath);
+    public void lennaFilter() throws IOException {
+        Imajine lenna = new Imajine(LENNA_PATH);
 
         for (int i = 0; i < lenna.getWidth(); i++) {
             for (int j = 0; j < lenna.getWidth(); j++) {
@@ -49,6 +53,38 @@ public class ImajineTest {
             }
         }
 
-        lenna.save(outputPath);
+        lenna.save(LENNA_OUTPUT_PATH);
+    }
+
+    @Test
+    public void eventsHorizon() throws IOException {
+        final int IMAGE_SIZE = 2000;
+        Imajine im = new Imajine(IMAGE_SIZE, IMAGE_SIZE);
+
+        for (int col = 0; col < IMAGE_SIZE; col++) {
+            for (int row = 0; row < IMAGE_SIZE; row++) {
+                float x = col, y = row;
+                float w = IMAGE_SIZE, h = IMAGE_SIZE;
+                float cx = (2 * x - w) / h;
+                float cy = (2 * y - w) / h;
+                float d = (float) Math.sqrt(cx * cx + cy * cy);
+
+                d -= 0.5;
+                d += 0.01 * h / (2 * (y - x) + h - w);
+                d = Math.abs(d);
+
+                if (d < 1e-6f) {
+                    d = 1e-6f;
+                }
+
+                d = 0.1f / d;
+
+                int color = (int) (255 * d / (1 + d));
+                Pixel p = new Pixel(row, col, color, color, color);
+
+                im.setPixel(p);
+            }
+        }
+        im.save(EVENTS_HORIZON_PATH);
     }
 }

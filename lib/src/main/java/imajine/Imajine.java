@@ -1,23 +1,23 @@
 package imajine;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.imageio.ImageIO;
 
 public class Imajine {
     @Nonnull
     private int width, height;
 
     @Nonnull
-    private String source, format;
-
-    @Nonnull
     private BufferedImage bufferedImage;
+
+    @Nullable
+    private String source, format;
 
     /**
      * Constructs an Imajine object from the specified image file.
@@ -47,6 +47,25 @@ public class Imajine {
         width = bufferedImage.getWidth();
         height = bufferedImage.getHeight();
         format = source.substring(source.lastIndexOf('.') + 1);
+    }
+
+    /**
+     * Constructs an Imajine object with the specified width and height.
+     *
+     * @param width  the width of the image
+     * @param height the height of the image
+     * @throws IllegalArgumentException if the width or height is less than or equal
+     *                                  to zero
+     */
+    public Imajine(int width, int height) {
+        if (width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("Width and height must be greater than zero");
+        }
+
+        this.width = width;
+        this.height = height;
+
+        bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     }
 
     /**
@@ -124,10 +143,10 @@ public class Imajine {
      */
     @Override
     public String toString() {
-        return String.format("{ \"path\": \"%s\", \"width\": %d, \"height\": %d, \"format\": \"%s\" }",
+        return String.format("{ \"path\": \"%s\", \"format\": \"%s\", \"width\": %d, \"height\": %d }",
                 source,
+                format,
                 width,
-                height,
-                format);
+                height);
     }
 }
