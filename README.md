@@ -19,6 +19,7 @@
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Why Imàjine?](#why-imàjine)
 - [Install](#install)
   - [Maven](#maven)
   - [Gradle](#gradle)
@@ -31,11 +32,15 @@
 - [Contributing](#contributing)
 - [License](#license)
 
+## Why Imàjine?
+
+Imàjine simplifies image processing in Java by providing an intuitive API for pixel-based operations. Traditional image processing in Java often involves complex and verbose code, making it difficult to perform even simple tasks. Imàjine abstracts away the boilerplate code, allowing developers to focus on the core logic of their applications. With Imàjine, it is easy to load, manipulate, and save images with just a few lines of code, making pixel-based operations more accessible and easy.
+
 ## Install
 
 ### Maven
 
-Add to pom.xml
+Step 1. Add to pom.xml
 
 ```xml
 <repositories>
@@ -58,7 +63,7 @@ Step 2. Add the dependency
 
 ### Gradle
 
-Add it in your root settings.gradle at the end of repositories:
+Step 1. Add it in the root settings.gradle at the end of repositories:
 
 ```gradle
 dependencyResolutionManagement {
