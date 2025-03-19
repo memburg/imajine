@@ -16,22 +16,6 @@
 ![Monthly download statistics](https://jitpack.io/v/memburg/imajine/month.svg)
 </div>
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Why Imàjine?](#why-imàjine)
-- [Install](#install)
-  - [Maven](#maven)
-  - [Gradle](#gradle)
-- [Usage](#usage)
-  - [Loading an Image](#loading-an-image)
-  - [Creating a New Image](#creating-a-new-image)
-  - [Events Horizon Code](#events-horizon-code)
-- [Examples Gallery](#examples-gallery)
-- [Running Tests](#running-tests)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Why Imàjine?
 
 Imàjine simplifies image processing in Java by providing an intuitive API for pixel-based operations. Traditional image processing in Java often involves complex and verbose code, making it difficult to perform even simple tasks. Imàjine abstracts away the boilerplate code, allowing developers to focus on the core logic of their applications. With Imàjine, it is easy to load, manipulate, and save images with just a few lines of code, making pixel-based operations more accessible and easy.
@@ -153,7 +137,12 @@ im.save(EVENTS_HORIZON_PATH);
 ## Examples Gallery
 
 ![]( /resources/lenna_examples.png )
+
+    The image below showcases the classic Lenna image, widely used as a standard test image in the field of image processing. The first panel displays the original Lenna image. Each subsequent panel demonstrates various pixel-based operations applied to the image, illustrating the versatility and power of pixel-level manipulations. These include transformations such as grayscale conversion, color adjustments, and noise addition, among others. This example highlights how fundamental pixel-based techniques can significantly alter and analyze image data, serving as a foundation for more advanced processing tasks.
+
 ![]( /resources/generative_art_examples.png )
+
+    This example demonstrates the creative and artistic potential of the library beyond traditional image processing tasks.
 
 ## Running Tests
 
