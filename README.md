@@ -142,7 +142,7 @@ im.save(EVENTS_HORIZON_PATH);
 
 ![]( /resources/generative_art_examples.png )
 
-> This example demonstrates the creative and artistic potential of the library beyond traditional image processing tasks.
+> This example demonstrates the creative and artistic potential of the library beyond traditional image processing tasks. From left to right: Grid Distotion, Event Horizon Simulation, Multicolor Gradient, Radial Symmetry Pattern.
 
 ## Running Tests
 
