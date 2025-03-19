@@ -138,10 +138,12 @@ im.save(EVENTS_HORIZON_PATH);
 
 ![]( /resources/lenna_examples.png )
 
-> The image below showcases the classic Lenna image, widely used as a standard test image in the field of image processing. The first panel displays the original Lenna image. Each subsequent panel demonstrates various pixel-based operations applied to the image, illustrating the versatility and power of pixel-level manipulations. These include transformations such as grayscale conversion, color adjustments, and noise addition, among others. This example highlights how fundamental pixel-based techniques can significantly alter and analyze image data, serving as a foundation for more advanced processing tasks.
+> [!Note]
+> The image above showcases the classic Lenna image, widely used as a standard test image in the field of image processing. The first panel displays the original Lenna image. Each subsequent panel demonstrates various pixel-based operations applied to the image, illustrating the versatility and power of pixel-level manipulations. These include transformations such as grayscale conversion, color adjustments, and noise addition, among others. This example highlights how fundamental pixel-based techniques can significantly alter and analyze image data, serving as a foundation for more advanced processing tasks.
 
 ![]( /resources/generative_art_examples.png )
 
+> [!Note]
 > This example demonstrates the creative and artistic potential of the library beyond traditional image processing tasks. From left to right: Grid Distotion, Event Horizon Simulation, Multicolor Gradient, Radial Symmetry Pattern.
 
 ## Running Tests
