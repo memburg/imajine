@@ -102,8 +102,13 @@ public class Main {
 
 ### Events Horizon Code
 
+This is a simple simulation of an event horizon, adapted from a C-based ASCII version originally created by [Tsoding](https://github.com/rexim).
+
 ```java
 final int IMAGE_SIZE = 512;
+final String ROOT_DIR = System.getProperty("user.dir");
+final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/resources/events_horizon.png";
+
 Imajine im = new Imajine(IMAGE_SIZE, IMAGE_SIZE);
 
 for (int col = 0; col < IMAGE_SIZE; col++) {
