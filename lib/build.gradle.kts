@@ -39,8 +39,9 @@ java {
 tasks.named<Test>("test") {
     // Use TestNG for unit tests.
     useTestNG()
+}
 
-    testLogging {
-        events("standardOut", "started", "passed", "skipped", "failed")
-    }
+// Ensure compatibility with Gradle 9
+tasks.withType<JavaCompile> {
+    options.release.set(21)
 }
