@@ -36,8 +36,7 @@ java {
     }
 }
 
-tasks.named<Test>("test") {
-    // Use TestNG for unit tests.
+tasks.named<Test>("test").configure {
     useTestNG()
 }
 
