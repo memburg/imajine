@@ -12,6 +12,7 @@ plugins {
 }
 
 group = "com.github.memburg"
+version = "1.0.0"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -43,4 +44,16 @@ tasks.named<Test>("test").configure {
 // Ensure compatibility with Gradle 9
 tasks.withType<JavaCompile> {
     options.release.set(21)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            groupId = "com.github.memburg"
+            artifactId = "lib"
+            version = "1.0.0"
+        }
+    }
 }
