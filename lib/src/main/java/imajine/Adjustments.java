@@ -52,6 +52,49 @@ public class Adjustments {
         }
     }
 
+    public static void threshold(Imajine image, int threshold) {
+        // Iterate over each pixel in the image
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                // Get the current pixel
+                Pixel pixel = image.getPixel(x, y);
+
+                // Calculate the grayscale value of the pixel
+                int gray = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
+
+                // Set the pixel to black or white based on the threshold
+                int value = gray < threshold ? 0 : 255;
+
+                // Create a new pixel with the thresholded value
+                Pixel thresholdedPixel = new Pixel(x, y, value, value, value);
+
+                // Set the thresholded pixel back to the image
+                image.setPixel(thresholdedPixel);
+            }
+        }
+    }
+
+    public static void invert(Imajine image) {
+        // Iterate over each pixel in the image
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                // Get the current pixel
+                Pixel pixel = image.getPixel(x, y);
+
+                // Invert the RGB values
+                int r = 255 - pixel.getRed();
+                int g = 255 - pixel.getGreen();
+                int b = 255 - pixel.getBlue();
+
+                // Create a new pixel with the inverted RGB values
+                Pixel invertedPixel = new Pixel(x, y, r, g, b);
+
+                // Set the inverted pixel back to the image
+                image.setPixel(invertedPixel);
+            }
+        }
+    }
+
     private static int adjustColorComponent(int colorComponent, double brightnessFactor) {
         // Adjust the color component based on the brightness factor
         int adjustedComponent = (int) (colorComponent * (1 + brightnessFactor));

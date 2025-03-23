@@ -13,6 +13,8 @@ public class AdjustmentsTest {
     final String LENNA_NEGBR_PATH = ROOT_DIR + "/src/test/resources/lenna_negbr.png";
     final String LENNA_POSCO_PATH = ROOT_DIR + "/src/test/resources/lenna_posco.png";
     final String LENNA_NEGCO_PATH = ROOT_DIR + "/src/test/resources/lenna_negco.png";
+    final String LENNA_THRES_PATH = ROOT_DIR + "/src/test/resources/lenna_thres.png";
+    final String LENNA_INVER_PATH = ROOT_DIR + "/src/test/resources/lenna_inver.png";
 
     @Test
     public void shouldIncreaseBrightness() throws IOException {
@@ -48,5 +50,23 @@ public class AdjustmentsTest {
         lenna.save(LENNA_NEGCO_PATH);
 
         Assert.assertTrue(new File(LENNA_NEGCO_PATH).isFile());
+    }
+
+    @Test
+    public void shouldReturnThresholdImage() throws IOException {
+        Imajine lenna = new Imajine(LENNA_PATH);
+        Adjustments.threshold(lenna, 100);
+        lenna.save(LENNA_THRES_PATH);
+
+        Assert.assertTrue(new File(LENNA_THRES_PATH).isFile());
+    }
+
+    @Test
+    public void shouldReturnInvertImageColor() throws IOException {
+        Imajine lenna = new Imajine(LENNA_PATH);
+        Adjustments.invert(lenna);
+        lenna.save(LENNA_INVER_PATH);
+
+        Assert.assertTrue(new File(LENNA_INVER_PATH).isFile());
     }
 }
