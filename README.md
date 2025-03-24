@@ -86,8 +86,8 @@ public class Main {
 ### Creating a New Image
 
 ```java
-import imajine.Imajine;
 import imajine.Pixel;
+import imajine.Imajine;
 import java.io.IOException;
 
 public class Main {
