@@ -95,6 +95,57 @@ public class Adjustments {
         }
     }
 
+    public static void desaturate(Imajine image) {
+        // Iterate over each pixel in the image
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                // Get the current pixel
+                Pixel pixel = image.getPixel(x, y);
+
+                // Calculate the grayscale value of the pixel
+                int gray = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
+
+                // Create a new pixel with the grayscale value
+                Pixel desaturatedPixel = new Pixel(x, y, gray, gray, gray);
+
+                // Set the desaturated pixel back to the image
+                image.setPixel(desaturatedPixel);
+            }
+        }
+    }
+
+    public static void posterize(Imajine image, int levels) {
+        // Iterate over each pixel in the image
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                // Get the current pixel
+                Pixel pixel = image.getPixel(x, y);
+
+                // Posterize the RGB values
+                int r = posterizeComponent(pixel.getRed(), levels);
+                int g = posterizeComponent(pixel.getGreen(), levels);
+                int b = posterizeComponent(pixel.getBlue(), levels);
+
+                // Create a new pixel with the posterized RGB values
+                Pixel posterizedPixel = new Pixel(x, y, r, g, b);
+
+                // Set the posterized pixel back to the image
+                image.setPixel(posterizedPixel);
+            }
+        }
+    }
+
+    private static int posterizeComponent(int colorComponent, int levels) {
+        // Divide the color component into 4 equal intervals
+        int interval = 256 / levels;
+
+        // Determine the posterized value based on the interval
+        int value = (colorComponent / interval) * interval;
+
+        // Ensure the value is within the valid range (0-255)
+        return Math.max(0, Math.min(255, value));
+    }
+
     private static int adjustColorComponent(int colorComponent, double brightnessFactor) {
         // Adjust the color component based on the brightness factor
         int adjustedComponent = (int) (colorComponent * (1 + brightnessFactor));
