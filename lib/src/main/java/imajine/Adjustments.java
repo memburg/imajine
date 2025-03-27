@@ -1,6 +1,23 @@
 package imajine;
 
 public class Adjustments {
+    /**
+     * Adjusts the brightness of the given image by applying a brightness factor to
+     * each pixel.
+     * The brightness factor should be in the range [-1.0, 1.0], where:
+     * <ul>
+     * <li>-1.0 represents the darkest adjustment (completely black).</li>
+     * <li>0.0 represents no adjustment (original brightness).</li>
+     * <li>1.0 represents the brightest adjustment (maximum brightness).</li>
+     * </ul>
+     *
+     * @param image            The image to adjust. This must be an instance of
+     *                         {@code Imajine}.
+     * @param brightnessFactor The factor by which to adjust the brightness. Values
+     *                         outside the range [-1.0, 1.0] will be clamped to this
+     *                         range.
+     * @throws IllegalArgumentException if the image is null.
+     */
     public static void adjustBrightness(Imajine image, double brightnessFactor) {
         // Ensure brightnessFactor is within the valid range
         brightnessFactor = Math.max(-1.0, Math.min(1.0, brightnessFactor));
@@ -25,6 +42,24 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Adjusts the contrast of the given image by applying a contrast factor.
+     * The contrast factor determines the intensity of the contrast adjustment,
+     * where values range from -1.0 (minimum contrast) to 1.0 (maximum contrast).
+     *
+     * <p>
+     * The method iterates over each pixel in the image, adjusts its RGB
+     * components based on the contrast factor, and updates the image with the
+     * modified pixel values.
+     * </p>
+     *
+     * @param image          The image to adjust. Must be an instance of
+     *                       {@code Imajine}.
+     * @param contrastFactor The contrast adjustment factor. Values should be
+     *                       between -1.0 and 1.0. Values outside this range
+     *                       will be clamped to the nearest valid value.
+     * @throws IllegalArgumentException if the image is null.
+     */
     public static void adjustContrast(Imajine image, double contrastFactor) {
         // Ensure contrastFactor is within a reasonable range (e.g., -1.0 to 1.0)
         contrastFactor = Math.max(-1.0, Math.min(1.0, contrastFactor));
@@ -52,6 +87,19 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Applies a threshold filter to the given image. Each pixel in the image is
+     * converted to grayscale and compared against the specified threshold value. If
+     * the grayscale value of a pixel is less than the threshold, the pixel is set
+     * to black (0, 0, 0). Otherwise, the pixel is set to white (255, 255, 255).
+     *
+     * @param image     The image to which the threshold filter will be applied. The
+     *                  image should support methods for retrieving and setting
+     *                  pixel values.
+     * @param threshold The threshold value used to determine whether a pixel is set
+     *                  to black or white. This value should be in the range [0,
+     *                  255].
+     */
     public static void threshold(Imajine image, int threshold) {
         // Iterate over each pixel in the image
         for (int y = 0; y < image.getHeight(); y++) {
@@ -74,6 +122,13 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Inverts the colors of the given image. Each pixel's RGB values are inverted
+     * by subtracting them from 255.
+     *
+     * @param image The image to be inverted. This must be an instance of
+     *              {@code Imajine}.
+     */
     public static void invert(Imajine image) {
         // Iterate over each pixel in the image
         for (int y = 0; y < image.getHeight(); y++) {
@@ -95,6 +150,14 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Desaturates the colors of the given image by converting each pixel to its
+     * grayscale equivalent. The grayscale value is calculated using the luminosity
+     * method.
+     *
+     * @param image The image to be desaturated. This must be an instance of
+     *              {@code Imajine}.
+     */
     public static void desaturate(Imajine image) {
         // Iterate over each pixel in the image
         for (int y = 0; y < image.getHeight(); y++) {
@@ -114,6 +177,16 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Posterizes the colors of the given image by reducing the number of color
+     * levels in each RGB channel. The number of levels is specified by the
+     * {@code levels} parameter.
+     *
+     * @param image  The image to be posterized. This must be an instance of
+     *               {@code Imajine}.
+     * @param levels The number of color levels to use for posterization. This
+     *               should be a positive integer greater than 1.
+     */
     public static void posterize(Imajine image, int levels) {
         // Iterate over each pixel in the image
         for (int y = 0; y < image.getHeight(); y++) {
@@ -135,6 +208,13 @@ public class Adjustments {
         }
     }
 
+    /**
+     * Posterizes a single color component by reducing its number of levels.
+     *
+     * @param colorComponent The color component to posterize (0-255).
+     * @param levels         The number of levels to use for posterization.
+     * @return The posterized color component.
+     */
     private static int posterizeComponent(int colorComponent, int levels) {
         // Divide the color component into 4 equal intervals
         int interval = 256 / levels;
@@ -146,6 +226,13 @@ public class Adjustments {
         return Math.max(0, Math.min(255, value));
     }
 
+    /**
+     * Adjusts a single color component based on the brightness factor.
+     *
+     * @param colorComponent   The color component to adjust (0-255).
+     * @param brightnessFactor The brightness adjustment factor (-1.0 to 1.0).
+     * @return The adjusted color component.
+     */
     private static int adjustColorComponent(int colorComponent, double brightnessFactor) {
         // Adjust the color component based on the brightness factor
         int adjustedComponent = (int) (colorComponent * (1 + brightnessFactor));
@@ -154,6 +241,13 @@ public class Adjustments {
         return Math.max(0, Math.min(255, adjustedComponent));
     }
 
+    /**
+     * Adjusts a single color component based on the contrast scaling factor.
+     *
+     * @param colorComponent The color component to adjust (0-255).
+     * @param scalingFactor  The contrast scaling factor.
+     * @return The adjusted color component.
+     */
     private static int adjustContrastComponent(int colorComponent, double scalingFactor) {
         // Normalize the color component to the range [-128, 128]
         double normalizedComponent = colorComponent - 128;
