@@ -209,21 +209,38 @@ public class Adjustments {
     }
 
     /**
-     * Posterizes a single color component by reducing its number of levels.
+     * Applies a photo filter to the given image by blending each pixel with a
+     * specified color. The blending density determines how much of the filter color
+     * is applied.
      *
-     * @param colorComponent The color component to posterize (0-255).
-     * @param levels         The number of levels to use for posterization.
-     * @return The posterized color component.
+     * @param image   The image to which the filter will be applied. This must be an
+     *                instance of {@code Imajine}.
+     * @param r       The red component of the filter color (0-255).
+     * @param g       The green component of the filter color (0-255).
+     * @param b       The blue component of the filter color (0-255).
+     * @param density The blending density (0.0 to 1.0). A value of 0.0 means no
+     *                effect, while 1.0 means full effect.
      */
-    private static int posterizeComponent(int colorComponent, int levels) {
-        // Divide the color component into 4 equal intervals
-        int interval = 256 / levels;
+    public static void applyPhotoFilter(Imajine image, int r, int g, int b, float density) {
+        // Ensure density is clamped between 0 (no effect) and 1 (full effect)
+        density = Math.max(0.0f, Math.min(1.0f, density));
 
-        // Determine the posterized value based on the interval
-        int value = (colorComponent / interval) * interval;
+        // Iterate over each pixel in the image
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                // Get the current pixel
+                Pixel pixel = image.getPixel(x, y);
 
-        // Ensure the value is within the valid range (0-255)
-        return Math.max(0, Math.min(255, value));
+                // Blend the original pixel with the filter color
+                int alteredR = blendColor(pixel.getRed(), r, density);
+                int alteredG = blendColor(pixel.getGreen(), g, density);
+                int alteredB = blendColor(pixel.getBlue(), b, density);
+
+                // Create and set the new pixel
+                Pixel filteredPixel = new Pixel(x, y, alteredR, alteredG, alteredB);
+                image.setPixel(filteredPixel);
+            }
+        }
     }
 
     /**
@@ -260,5 +277,36 @@ public class Adjustments {
 
         // Clamp the result to ensure it stays within the valid range
         return Math.max(0, Math.min(255, result));
+    }
+
+    /**
+     * Posterizes a single color component by reducing its number of levels.
+     *
+     * @param colorComponent The color component to posterize (0-255).
+     * @param levels         The number of levels to use for posterization.
+     * @return The posterized color component.
+     */
+    private static int posterizeComponent(int colorComponent, int levels) {
+        // Divide the color component into 4 equal intervals
+        int interval = 256 / levels;
+
+        // Determine the posterized value based on the interval
+        int value = (colorComponent / interval) * interval;
+
+        // Ensure the value is within the valid range (0-255)
+        return Math.max(0, Math.min(255, value));
+    }
+
+    /**
+     * Blends the original color with the filter color based on the specified
+     * density.
+     *
+     * @param original The original color component (0-255).
+     * @param filter   The filter color component (0-255).
+     * @param density  The blending density (0.0 to 1.0).
+     * @return The blended color component.
+     */
+    private static int blendColor(int original, int filter, double density) {
+        return (int) (original * (1 - density) + filter * density);
     }
 }

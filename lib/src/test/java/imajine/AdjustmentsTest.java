@@ -17,6 +17,7 @@ public class AdjustmentsTest {
     final String LENNA_INVER_PATH = ROOT_DIR + "/src/test/output/lenna_inver.png";
     final String LENNA_DESAT_PATH = ROOT_DIR + "/src/test/output/lenna_desat.png";
     final String LENNA_POSTE_PATH = ROOT_DIR + "/src/test/output/lenna_poste.png";
+    final String LENNA_PHOTO_FILTER_PATH = ROOT_DIR + "/src/test/output/lenna_photo_filter.png";
 
     @Test
     public void shouldIncreaseBrightness() throws IOException {
@@ -88,5 +89,14 @@ public class AdjustmentsTest {
         lenna.save(LENNA_POSTE_PATH);
 
         Assert.assertTrue(new File(LENNA_POSTE_PATH).isFile());
+    }
+
+    @Test
+    public void shouldReturnColoredImage() throws IOException {
+        Imajine lenna = new Imajine(LENNA_PATH);
+        Adjustments.applyPhotoFilter(lenna, 0, 50, 9, 0.5f);
+        lenna.save(LENNA_PHOTO_FILTER_PATH);
+
+        Assert.assertTrue(new File(LENNA_PHOTO_FILTER_PATH).isFile());
     }
 }
