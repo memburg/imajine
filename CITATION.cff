@@ -18,6 +18,5 @@ keywords:
   - java
   - pixel-based operations
 license: MIT
-commit: 9344d09078fc6c884bd883c2881cbddc411aa437
-version: v1.0.0
-date-released: '2025-03-20'
+version: v1.1.0
+date-released: '2025-03-30'
