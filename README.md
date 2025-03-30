@@ -41,7 +41,7 @@ Step 2. Add the dependency
 <dependency>
   <groupId>com.github.memburg</groupId>
   <artifactId>imajine</artifactId>
-  <version>1.0.0</version>
+  <version>v1.1.0</version>
 </dependency>
 ```
 
@@ -63,7 +63,7 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies {
-  implementation 'com.github.memburg:imajine:1.0.0'
+  implementation 'com.github.memburg:imajine:v1.1.0'
 }
 ```
 
@@ -112,27 +112,27 @@ final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/resources/events_horizo
 Imajine im = new Imajine(IMAGE_SIZE, IMAGE_SIZE);
 
 for (int col = 0; col < IMAGE_SIZE; col++) {
-  for (int row = 0; row < IMAGE_SIZE; row++) {
-    float x = col, y = row;
-    float w = IMAGE_SIZE, h = IMAGE_SIZE;
-    float cx = (2 * x - w) / h;
-    float cy = (2 * y - w) / h;
-    float d = (float) Math.sqrt(cx * cx + cy * cy);
+    for (int row = 0; row < IMAGE_SIZE; row++) {
+        float x = col, y = row;
+        float w = IMAGE_SIZE, h = IMAGE_SIZE;
+        float cx = (2 * x - w) / h;
+        float cy = (2 * y - w) / h;
+        float d = (float) Math.sqrt(cx * cx + cy * cy);
 
-    d -= 0.5;
-    d += 0.01 * h / (2 * (y - x) + h - w);
-    d = Math.abs(d);
+        d -= 0.5;
+        d += 0.01 * h / (2 * (y - x) + h - w);
+        d = Math.abs(d);
 
-    if (d < 1e-6f) {
-        d = 1e-6f;
-    }
+        if (d < 1e-6f) {
+            d = 1e-6f;
+        }
 
-    d = 0.1f / d;
+        d = 0.1f / d;
 
-    int color = (int) (255 * d / (1 + d));
-    Pixel p = new Pixel(row, col, color, color, color);
+        int color = (int) (255 * d / (1 + d));
+        Pixel p = new Pixel(row, col, color, color, color);
 
-    im.setPixel(p);
+        im.setPixel(p);
   }
 }
 
