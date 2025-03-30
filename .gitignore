@@ -6,3 +6,6 @@ build
 
 # remove .DS_Store
 .DS_Store
+
+# ignore output files
+lib/src/test/output/

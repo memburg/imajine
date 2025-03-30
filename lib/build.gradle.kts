@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "com.github.memburg"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -53,7 +53,7 @@ publishing {
 
             groupId = "com.github.memburg"
             artifactId = "lib"
-            version = "1.0.0"
+            version = "1.1.0"
         }
     }
 }

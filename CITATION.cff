@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Imàjine
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Rubén Andrés
+    family-names: Mendoza Burgos
+    email: ramb.memburg@gmail.com
+repository-code: 'https://github.com/memburg/imajine'
+abstract: A library for pixel-based operations in Java
+keywords:
+  - image processing
+  - java
+  - pixel-based operations
+license: MIT
+version: v1.1.0
+date-released: '2025-03-30'
