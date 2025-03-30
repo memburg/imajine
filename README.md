@@ -9,11 +9,19 @@
 
 <div align="center">
 
+<!-- [![GitHub stars](https://img.shields.io/github/stars/memburg/imajine.svg?style=flat&label=stars)](https://github.com/memburg/imajine/) -->
 ![java](https://img.shields.io/badge/java-21.0.5-b07219.svg)
 ![gradle](https://img.shields.io/badge/gradle-8.11-02303a.svg)
+
+</div>
+
+
+<div align="center">
+
 [![Release](https://jitpack.io/v/memburg/imajine.svg)](https://jitpack.io/#memburg/imajine)
 ![Weekly download statistics](https://jitpack.io/v/memburg/imajine/week.svg)
 ![Monthly download statistics](https://jitpack.io/v/memburg/imajine/month.svg)
+
 </div>
 
 ## Why Imàjine?
@@ -28,10 +36,10 @@ Step 1. Add to pom.xml
 
 ```xml
 <repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
 </repositories>
 ```
 
@@ -39,9 +47,9 @@ Step 2. Add the dependency
 
 ```xml
 <dependency>
-  <groupId>com.github.memburg</groupId>
-  <artifactId>imajine</artifactId>
-  <version>v1.1.0</version>
+    <groupId>com.github.memburg</groupId>
+    <artifactId>imajine</artifactId>
+    <version>v1.1.0</version>
 </dependency>
 ```
 
@@ -51,11 +59,11 @@ Step 1. Add it in the root settings.gradle at the end of repositories:
 
 ```gradle
 dependencyResolutionManagement {
-  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-  repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-  }
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
@@ -63,7 +71,7 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies {
-  implementation 'com.github.memburg:imajine:v1.1.0'
+    implementation 'com.github.memburg:imajine:v1.1.0'
 }
 ```
 
@@ -133,7 +141,7 @@ for (int col = 0; col < IMAGE_SIZE; col++) {
         Pixel p = new Pixel(row, col, color, color, color);
 
         im.setPixel(p);
-  }
+    }
 }
 
 im.save(EVENTS_HORIZON_PATH);
