@@ -112,14 +112,13 @@ public class ImajineTest {
 
     @Test
     public void eventsHorizon() throws IOException {
-        final int IMAGE_WIDTH = 1920;
-        final int IMAGE_HEIGHT = 1080;
-        Imajine im = new Imajine(IMAGE_WIDTH, IMAGE_HEIGHT);
+        final int IMAGE_SIZE = 512;
+        Imajine im = new Imajine(IMAGE_SIZE, IMAGE_SIZE);
 
-        for (int col = 0; col < IMAGE_HEIGHT; col++) {
-            for (int row = 0; row < IMAGE_WIDTH; row++) {
+        for (int col = 0; col < IMAGE_SIZE; col++) {
+            for (int row = 0; row < IMAGE_SIZE; row++) {
                 float x = col, y = row;
-                float w = IMAGE_HEIGHT, h = IMAGE_WIDTH;
+                float w = IMAGE_SIZE, h = IMAGE_SIZE;
                 float cx = (2 * x - w) / h;
                 float cy = (2 * y - w) / h;
                 float d = (float) Math.sqrt(cx * cx + cy * cy);
