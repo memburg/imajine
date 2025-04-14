@@ -11,11 +11,12 @@ import static org.testng.Assert.*;
 public class ImajineTest {
     final String ROOT_DIR = System.getProperty("user.dir");
     final String LENNA_PATH = ROOT_DIR + "/src/test/resources/lenna.png";
-    final String LENNA_OUTPUT_PATH = ROOT_DIR + "/src/test/resources/lenna_filter.png";
+    final String LENNA_OUTPUT_PATH = ROOT_DIR + "/src/test/output/lenna_filter.png";
 
     // generative art
-    final String GENERIC_ART_PATH = ROOT_DIR + "/src/test/resources/generic_art.png";
-    final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/resources/events_horizon.png";
+    final String GENERIC_ART_PATH = ROOT_DIR + "/src/test/output/generic_art.png";
+    final String ARTISTIC_FRACTAL_PATH = ROOT_DIR + "/src/test/output/fractal.png";
+    final String EVENTS_HORIZON_PATH = ROOT_DIR + "/src/test/output/events_horizon.png";
 
     @Test
     public void toStringShouldBeValidJSON() throws IOException {
@@ -141,5 +142,41 @@ public class ImajineTest {
 
         im.save(EVENTS_HORIZON_PATH);
         Assert.assertTrue(new File(EVENTS_HORIZON_PATH).isFile());
+    }
+
+    @Test
+    public void artisticFractal() throws IOException {
+        final int WIDTH = 512;
+        final int HEIGHT = 512;
+        Imajine im = new Imajine(WIDTH, HEIGHT);
+
+        // an algorithm to generate a colourful as a rainbow fractal pattern
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                double zx = 1.5 * (x - WIDTH / 2) / (0.5 * WIDTH);
+                double zy = (y - HEIGHT / 2) / (0.5 * HEIGHT);
+                double cX = -0.7; // Real part of the complex constant
+                double cY = 0.27015; // Imaginary part of the complex constant
+                int i = 0;
+                int maxIter = 1000;
+
+                while (zx * zx + zy * zy < 4 && i < maxIter) {
+                    double tmp = zx * zx - zy * zy + cX;
+                    zy = 2.0 * zx * zy + cY;
+                    zx = tmp;
+                    i++;
+                }
+
+                int r = (i % 256);
+                int g = (i * 5 % 256);
+                int b = (i * 13 % 256);
+
+                Pixel p = new Pixel(x, y, r, g, b);
+                im.setPixel(p);
+            }
+        }
+
+        im.save(ARTISTIC_FRACTAL_PATH);
+        Assert.assertTrue(new File(ARTISTIC_FRACTAL_PATH).isFile());
     }
 }
